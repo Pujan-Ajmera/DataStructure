@@ -1,0 +1,38 @@
+class HelloWorld {
+    public static void main(String[] args) {
+        String num1 ="1";
+        String num2 ="99";
+        int p1 = num1.length()-1;//0
+        int p2 = num2.length()-1;//0
+        int c=0;
+        String ans="";
+        int a=0,b=0;
+        boolean isa=true;
+        boolean isb=true;
+        while(p1>=0 || p2>=0){
+            if(p1<0){
+                a=0;
+                isa=false;
+            }
+            if(p2<0){
+                b=0;
+                isb=false;
+            }
+            if(isa)
+            a = Integer.parseInt(num1.charAt(p1)+"");//1
+            if(isb)
+            b = Integer.parseInt(num2.charAt(p2)+"");//9
+            int sum=a+b+c;
+            
+            ans+=sum%10;//43
+            c=(sum)/10;//0
+            p1--;
+            p2--;
+        }
+        if(c!=0){
+            ans+=c;
+        }
+        StringBuilder sb = new StringBuilder(ans);
+        System.out.println(sb.reverse());
+    }
+}
