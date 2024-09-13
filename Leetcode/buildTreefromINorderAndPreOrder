@@ -1,0 +1,25 @@
+class Solution {
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        int n=preorder.length;
+        int[] ind={0};
+     return ans(preorder,inorder,0,n-1,ind);   
+    }
+    public TreeNode ans(int[] preorder,int[] inorder,int start,int end,int[] ind){
+        if(start>end){
+            return null;
+        }
+        int rootV = preorder[ind[0]];
+        ind[0]++;
+        int i=0;
+        TreeNode root=new TreeNode(rootV);
+        for(i=start;i<=end;i++){
+            if(inorder[i]==rootV){
+                break;
+            }
+        }
+        
+        root.left=ans(preorder,inorder,start,i-1,ind);
+root.right=ans(preorder,inorder,i+1,end,ind);     
+        return root;
+    }
+}
